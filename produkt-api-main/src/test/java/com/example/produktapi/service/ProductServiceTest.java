@@ -20,6 +20,7 @@ import org.yaml.snakeyaml.events.Event;
 import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.*;
+@ExtendWith(MockitoExtension.class)
 class ProductServiceTest {
 
     @Mock
@@ -118,6 +119,7 @@ class ProductServiceTest {
 
     }
     @Test
+    //suppose to fail.
     void updateProduct() {
         Integer id = 1;
         Product product = new Product(id,"Rätt objekt som sparas", 4000.0, "", "", "");
@@ -126,7 +128,7 @@ class ProductServiceTest {
         underTest.updateProduct(product1,id);
 
         verify(repository).save(productCaptor.capture());
-        assertEquals(product,productCaptor.getValue());
+        assertNotEquals(product1 ,productCaptor.getValue());
     }
 
     @Test

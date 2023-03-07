@@ -10,6 +10,7 @@ import com.example.produktapi.model.Product;
 import java.util.List;
 
 @RestController
+@CrossOrigin
 public class ProductController {
 
     private final ProductService productService;
